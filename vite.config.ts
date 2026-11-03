@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
@@ -17,17 +17,10 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+      allowedHosts: true as const,
+    },
+    preview: {
+      allowedHosts: true as const,
     },
   };
 });
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react' // hoặc plugin vue tùy dự án
-
-export default defineConfig({
-  plugins: [react()],
-  preview: {
-    allowedHosts: ['sdtc-fpqn.onrender.com'],
-    // Hoặc cho phép tất cả các host để đỡ phải sửa lại khi đổi tên miền:
-    // allowedHosts: true
-  }
-})
