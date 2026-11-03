@@ -1,0 +1,6 @@
+{
+  "name": "Sơ Đồ Tổ Chức & Nhân Sự Doanh Nghiệp",
+  "description": "Hệ thống sơ đồ tổ chức doanh nghiệp tương tác trực quan với dữ liệu 190+ nhân sự theo từng phòng ban, hỗ trợ đồng bộ Google Sheets, tìm kiếm và phân cấp chi tiết.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

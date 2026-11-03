@@ -1,0 +1,284 @@
+import { Employee } from '../types/org';
+
+export const RAW_CSV_DATA = `Name,Team,Part,z,Position title,Employment Type,Hazardous Positon,Photo_URL,Manager_ID,Is_Leader
+1,Business Support,Finance & Accounting,Part Leader,Vice Director,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=1,28,TRUE
+2,Business Support,Finance & Accounting,Staff,Ass Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=2,1,FALSE
+3,Business Support,Finance & Accounting,Staff,Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=3,1,FALSE
+4,Business Support,Finance & Accounting,Staff,Ass Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=4,1,FALSE
+5,Business Support,GA,Staff,Worker,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=5,28,FALSE
+6,Business Support,GA,Staff,Staff 3,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=6,28,FALSE
+7,Business Support,GA,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=7,28,FALSE
+8,Business Support,GA,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=8,28,FALSE
+9,Business Support,HR,Staff,Staff 3,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=9,10,FALSE
+10,Business Support,HR,Part Leader,Part Leader,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=10,28,TRUE
+11,Business Support,HR,Staff,Office staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=11,10,FALSE
+12,Business Support,Purchasing,Part Leader,Ass Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=12,28,TRUE
+13,Business Support,Purchasing,Staff,Specialist,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=13,12,FALSE
+14,Business Support,Purchasing,Staff,Specialist,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=14,12,FALSE
+15,Business Support,Purchasing,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=15,12,FALSE
+16,Business Support,SCM,Staff,Forklift driver,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=16,17,FALSE
+17,Business Support,SCM,Part Leader,Ass Leader W.H,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=17,28,TRUE
+18,Business Support,SCM,Staff,Forklift driver,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=18,17,FALSE
+19,Business Support,SCM,Staff,W.H staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=19,17,FALSE
+20,Business Support,SCM,Staff,Forklift driver,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=20,17,FALSE
+21,Business Support,SCM,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=21,17,FALSE
+22,Business Support,SCM,Staff,W.H staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=22,17,FALSE
+23,Business Support,SCM,Staff,W.H staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=23,17,FALSE
+24,Business Support,SCM,Staff,W.H staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=24,17,FALSE
+25,Business Support,SCM,Staff,W.H staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=25,17,FALSE
+26,Business Support,SCM,Staff,W.H staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=26,17,FALSE
+27,Business Support,SCM,Staff,,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=27,17,FALSE
+28,Business Support,,Team Leader,Team Leader,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=28,190,TRUE
+29,Business Support,,Team Leader,Team Leader,LKS,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=29,190,TRUE
+30,Compound Production,Compound Production Management,Staff,Specialist,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=30,45,FALSE
+31,Compound Production,Compound Production Management,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=31,45,FALSE
+32,Compound Production,Compound Production Management,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=32,45,FALSE
+33,Compound Production,Compound Production Management,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=33,45,FALSE
+34,Compound Production,Compound QM,Staff,QA staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=34,45,FALSE
+35,Compound Production,Compound QM,Staff,Specialist,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=35,45,FALSE
+36,Compound Production,Compound QM,Staff,QC staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=36,45,FALSE
+37,Compound Production,Compound QM,Staff,QA staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=37,45,FALSE
+38,Compound Production,Compound QM,Staff,QC staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=38,45,FALSE
+39,Compound Production,Compound QM,Staff,QA staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=39,45,FALSE
+40,Compound Production,Compound QM,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=40,45,FALSE
+41,Compound Production,Compound QM,Staff,QC staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=41,45,FALSE
+42,Compound Production,Compound QM,Staff,QC staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=42,45,FALSE
+43,Compound Production,Compound QM,Staff,QC staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=43,45,FALSE
+44,Compound Production,Compound QM,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=44,45,FALSE
+45,Compound Production,Production,Part Leader,Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=45,190,TRUE
+46,Compound Production,Production,Staff,Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=46,45,FALSE
+47,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=47,45,FALSE
+48,Compound Production,Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=48,45,FALSE
+49,Compound Production,Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=49,45,FALSE
+50,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=50,45,FALSE
+51,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=51,45,FALSE
+52,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=52,45,FALSE
+53,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=53,45,FALSE
+54,Compound Production,Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=54,45,FALSE
+55,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=55,45,FALSE
+56,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=56,45,FALSE
+57,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=57,45,FALSE
+58,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=58,45,FALSE
+59,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=59,45,FALSE
+60,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=60,45,FALSE
+61,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=61,45,FALSE
+62,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=62,45,FALSE
+63,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=63,45,FALSE
+64,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=64,45,FALSE
+65,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=65,45,FALSE
+66,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=66,45,FALSE
+67,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=67,45,FALSE
+68,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=68,45,FALSE
+69,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=69,45,FALSE
+70,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=70,45,FALSE
+71,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=71,45,FALSE
+72,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=72,45,FALSE
+73,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=73,45,FALSE
+74,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=74,45,FALSE
+75,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=75,45,FALSE
+76,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=76,45,FALSE
+77,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=77,45,FALSE
+78,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=78,45,FALSE
+79,Compound Production,Production,Staff,Boiler eng,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=79,45,FALSE
+80,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=80,45,FALSE
+81,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=81,45,FALSE
+82,Compound Production,Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=82,45,FALSE
+83,Compound T&S,Compound S&M,Part Leader,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=83,90,TRUE
+84,Compound T&S,Compound S&M,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=84,83,FALSE
+85,Compound T&S,Compound S&M,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=85,83,FALSE
+86,Compound T&S,Compound S&M,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=86,83,FALSE
+87,Compound T&S,Compound S&M,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=87,83,FALSE
+88,Compound T&S,Compound Technical,Staff,Specialist,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=88,89,FALSE
+89,Compound T&S,Compound Technical,Part Leader,Ass manager,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=89,90,TRUE
+90,Compound T&S,,Team Leader,Team Leader,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=90,190,TRUE
+91,CS,,Team Leader,Team Leader,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=91,190,TRUE
+92,PU Production,EHS,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=92,96,FALSE
+93,PU Production,EHS,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=93,96,FALSE
+94,PU Production,EHS,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=94,96,FALSE
+95,PU Production,EHS,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=95,96,FALSE
+96,PU Production,EHS,Part Leader,Staff 3,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=96,190,TRUE
+97,PU Production,EHS,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=97,96,FALSE
+98,PU Production,Maintenance,Part Leader,Manager,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=98,190,TRUE
+99,PU Production,Maintenance,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=99,98,FALSE
+100,PU Production,Maintenance,Staff,Boiler Eng,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=100,98,FALSE
+101,PU Production,Maintenance,Staff,Boiler eng,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=101,98,FALSE
+102,PU Production,Maintenance,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=102,98,FALSE
+103,PU Production,Maintenance,Staff,Boiler eng,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=103,98,FALSE
+104,PU Production,Maintenance,Staff,Boiler eng,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=104,98,FALSE
+105,PU Production,Maintenance,Staff,Electric,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=105,98,FALSE
+106,PU Production,Maintenance,Staff,Electric,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=106,98,FALSE
+107,PU Production,Maintenance,Staff,Electric,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=107,98,FALSE
+108,PU Production,Production,Part Leader,Supervisor,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=108,98,FALSE
+109,PU Production,Production Management,Part Leader,Ass Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=109,98,FALSE
+110,PU Production,Production Management,Staff,Specialist,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=110,98,FALSE
+111,PU Production,Production Management,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=111,98,FALSE
+112,PU Production,Production Management,Staff,Office staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=112,98,FALSE
+113,PU Production,PUD Production,Staff,Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=113,98,FALSE
+114,PU Production,PUD Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=114,98,FALSE
+115,PU Production,PUD Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=115,98,FALSE
+116,PU Production,PUD Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=116,98,FALSE
+117,PU Production,PUD Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=117,98,FALSE
+118,PU Production,PUD Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=118,98,FALSE
+119,PU Production,PUD Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=119,98,FALSE
+120,PU Production,PUD Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=120,98,FALSE
+121,PU Production,PUD Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=121,98,FALSE
+122,PU Production,PUD Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=122,98,FALSE
+123,PU Production,PUS Production,Part Leader,Ass Supervisor,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=123,98,FALSE
+124,PU Production,PUS Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=124,98,FALSE
+125,PU Production,PUS Production,Staff,Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=125,98,FALSE
+126,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=126,98,FALSE
+127,PU Production,PUS Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=127,98,FALSE
+128,PU Production,PUS Production,Staff,Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=128,98,FALSE
+129,PU Production,PUS Production,Staff,worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=129,98,FALSE
+130,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=130,98,FALSE
+131,PU Production,PUS Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=131,98,FALSE
+132,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=132,98,FALSE
+133,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=133,98,FALSE
+134,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=134,98,FALSE
+135,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=135,98,FALSE
+136,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=136,98,FALSE
+137,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=137,98,FALSE
+138,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=138,98,FALSE
+139,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=139,98,FALSE
+140,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=140,98,FALSE
+141,PU Production,PUS Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=141,98,FALSE
+142,PU Production,QA,Part Leader,Ass Manager,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=142,98,FALSE
+143,PU Production,QA,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=143,98,FALSE
+144,PU Production,QA,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=144,98,FALSE
+145,PU Production,QA,Staff,Staff,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=145,98,FALSE
+146,PU Production,SCA Production,Part Leader,Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=146,98,FALSE
+147,PU Production,SCA Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=147,98,FALSE
+148,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=148,98,FALSE
+149,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=149,98,FALSE
+150,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=150,98,FALSE
+151,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=151,98,FALSE
+152,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=152,98,FALSE
+153,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=153,98,FALSE
+154,PU Production,SCA Production,Staff,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=154,98,FALSE
+155,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=155,98,FALSE
+156,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=156,98,FALSE
+157,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=157,98,FALSE
+158,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=158,98,FALSE
+159,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=159,98,FALSE
+160,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=160,98,FALSE
+161,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=161,98,FALSE
+162,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=162,98,FALSE
+163,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=163,98,FALSE
+164,PU Production,SCA Production,Staff,Electric,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=164,98,FALSE
+165,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=165,98,FALSE
+166,PU Production,SCA Production,Staff,Worker,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=166,98,FALSE
+167,PU Production,,Team Leader,Supervisor,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=167,98,FALSE
+168,PU Production,,Team Leader,Team Leader,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=168,98,FALSE
+169,PU1,PU S&M 1,Part Leader,Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=169,98,FALSE
+170,PU1,PU S&M 1,Staff,Specialist,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=170,98,FALSE
+171,PU1,PU S&M 1,Staff,Staff 3,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=171,98,FALSE
+172,PU1,PU Technical 1,Part Leader,Ass Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=172,98,FALSE
+173,PU1,PU Technical 1,Staff,Staff 3,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=173,98,FALSE
+174,PU1,PU Technical 1,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=174,98,FALSE
+175,PU1,,Team Leader,Team Leader,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=175,98,FALSE
+176,PU2,PU S&M 2,Staff,Ass Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=176,98,FALSE
+177,PU2,PU S&M 2,Part Leader,Manager,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=177,98,FALSE
+178,PU2,PU S&M 2,Staff,Specialist,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=178,98,FALSE
+179,PU2,PU S&M 2,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=179,98,FALSE
+180,PU2,PU Technical 2,Staff,Staff 3,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=180,98,FALSE
+181,PU2,,Team Leader,Team Leader,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=181,98,FALSE
+182,Strategic Business,Strategic Business,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=182,98,FALSE
+183,Strategic Business,Strategic Business,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=183,98,FALSE
+184,Strategic Business,Strategic Business,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=184,98,FALSE
+185,Strategic Business,Strategic Business,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=185,98,FALSE
+186,Strategic Business,Strategic Business,Staff,Staff,Local,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=186,98,FALSE
+187,Strategic Business,,Team Leader,Team Leader,LKS,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=187,98,FALSE
+188,T/S Center,T/S,Part Leader,Ass Leader,Local,Production,https://api.dicebear.com/7.x/avataaars/svg?seed=188,,TRUE
+189,T/S Center,,Team Leader,Team Leader,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=189,,
+190,,,Director,Director,Expat,Office,https://api.dicebear.com/7.x/avataaars/svg?seed=190,,`;
+
+export function parseCSVToEmployees(csvText: string): Employee[] {
+  const lines = csvText.trim().split(/\r?\n/);
+  if (lines.length < 2) return [];
+
+  const headers = lines[0].split(',').map((h) => h.trim());
+  const employees: Employee[] = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+
+    // Standard CSV split handling
+    const values = line.split(',').map((v) => v.trim());
+    const row: Record<string, string> = {};
+    headers.forEach((header, idx) => {
+      row[header] = values[idx] || '';
+    });
+
+    const id = row['Name'] || `${i}`;
+    let managerId = row['Manager_ID'] || '';
+    const level = row['z'] || 'Staff';
+    const team = row['Team'] || '';
+    const isLeader =
+      row['Is_Leader']?.toUpperCase() === 'TRUE' ||
+      level.toLowerCase().includes('leader') ||
+      level.toLowerCase().includes('director');
+
+    // Hierarchy normalization for unlinked nodes
+    if (id !== '190' && !managerId) {
+      if (id === '189') {
+        managerId = '190'; // T/S Center Team Leader reports to Director
+      } else if (id === '188') {
+        managerId = '189'; // T/S Center Part Leader reports to Team Leader #189
+      } else if (level === 'Team Leader') {
+        managerId = '190';
+      }
+    }
+
+    employees.push({
+      id,
+      fullName: getRepresentativeName(id, row['Position title'], level),
+      team: team || (id === '190' ? 'Executive Board' : 'Unassigned'),
+      part: row['Part'] || (level === 'Team Leader' ? 'General' : ''),
+      level: level || 'Staff',
+      positionTitle: row['Position title'] || 'Staff',
+      employmentType: row['Employment Type'] || 'Local',
+      hazardousPosition: row['Hazardous Positon'] || 'Office',
+      photoUrl:
+        row['Photo_URL'] || `https://api.dicebear.com/7.x/avataaars/svg?seed=${id}`,
+      managerId,
+      isLeader,
+      email: `emp${id}@enterprise.com`,
+      phone: `+84 (0) 90 ${String(id).padStart(3, '0')} ${String(Number(id) * 7).slice(-4).padStart(4, '1')}`,
+    });
+  }
+
+  return employees;
+}
+
+// Generates professional representative Vietnamese/Expat naming matching corporate roles
+function getRepresentativeName(id: string, position: string, level: string): string {
+  if (id === '190') return 'David Lee (Director / Giám Đốc Điều Hành)';
+  if (id === '28') return 'Michael Chang (Team Leader - Business Support)';
+  if (id === '29') return 'Kim Sung-Min (Co-Team Leader - Business Support)';
+  if (id === '45') return 'Nguyễn Văn Minh (Production Manager)';
+  if (id === '90') return 'Park Jun-Ho (Team Leader - Compound T&S)';
+  if (id === '91') return 'Alexandre Dubois (Team Leader - CS)';
+  if (id === '96') return 'Trần Đình Trọng (Part Leader - EHS)';
+  if (id === '98') return 'Lê Hồng Phong (Manager - Maintenance)';
+  if (id === '167') return 'Robert Miller (Supervisor - PU)';
+  if (id === '168') return 'Kenji Sato (Team Leader - PU Production)';
+  if (id === '175') return 'Hans Schmidt (Team Leader - PU1)';
+  if (id === '181') return 'William Taylor (Team Leader - PU2)';
+  if (id === '187') return 'Choi Won-Shik (Team Leader - Strategic Business)';
+  if (id === '189') return 'Marcus Vance (Team Leader - T/S Center)';
+  
+  // Standard Vietnamese naming seeds for natural experience
+  const lastNames = ['Nguyễn', 'Trần', 'Lê', 'Phạm', 'Hoàng', 'Vũ', 'Võ', 'Đặng', 'Bùi', 'Đỗ', 'Hồ', 'Ngô', 'Dương', 'Lý'];
+  const middleNames = ['Văn', 'Thị', 'Đình', 'Hữu', 'Ngọc', 'Quang', 'Anh', 'Minh', 'Thanh', 'Đức', 'Xuân'];
+  const firstNames = ['Nam', 'Hùng', 'Linh', 'Dũng', 'Trang', 'Hà', 'Phương', 'Bình', 'Hải', 'Tuấn', 'Hoa', 'Thảo', 'Khoa', 'Thịnh', 'Giang', 'Tâm', 'Yến', 'Long', 'Phúc', 'Bảo'];
+  
+  const num = parseInt(id, 10) || 1;
+  const l = lastNames[num % lastNames.length];
+  const m = middleNames[(num * 3) % middleNames.length];
+  const f = firstNames[(num * 7) % firstNames.length];
+
+  return `${l} ${m} ${f} (#${id})`;
+}
+
+export const INITIAL_EMPLOYEES: Employee[] = parseCSVToEmployees(RAW_CSV_DATA);
