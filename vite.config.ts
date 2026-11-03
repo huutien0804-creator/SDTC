@@ -20,3 +20,14 @@ export default defineConfig(() => {
     },
   };
 });
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react' // hoặc plugin vue tùy dự án
+
+export default defineConfig({
+  plugins: [react()],
+  preview: {
+    allowedHosts: ['sdtc-fpqn.onrender.com'],
+    // Hoặc cho phép tất cả các host để đỡ phải sửa lại khi đổi tên miền:
+    // allowedHosts: true
+  }
+})
